@@ -89,6 +89,14 @@ function Pokedex() {
                                     </span>
                                 ))}
                             </div>
+                            <div className=" flex justify-center space-x-8 mt-2">
+                                <div id="my promp" className="  bg-gradient-to-tr from-rose-900 to-rose-300 rounded-lg border-2">
+                                    <button className="w-14 text-slate-100	">info</button>
+                                </div>
+                                <div id="select"className="bg-gradient-to-tr from-rose-900 to-rose-300  rounded-lg border-2">
+                                    <button className="w-14 text-slate-100	">Select</button>
+                                </div>
+                            </div>
                         </div>
                     ))}
                 </div>
