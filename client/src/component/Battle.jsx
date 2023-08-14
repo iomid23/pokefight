@@ -83,6 +83,7 @@ const Battle = ({ userPokemon }) => {
         Battle Arena
       </h1>
       <div className="grid grid-cols-2 gap-4 p-6">
+        {/* User Pokemon */}
         <div className="cursor-pointer rounded-xl bg-gradient-to-tr from-red-900 to-red-500 duration-300 ease-in hover:-translate-y-5 hover:drop-shadow-2xl">
           <h1 className="mt-2 flex justify-center text-slate-50">
             {userPokemon.name}
@@ -93,6 +94,7 @@ const Battle = ({ userPokemon }) => {
             alt={userPokemon.name}
           />
         </div>
+        {/* Random Opponent */}
         <div className="cursor-pointer rounded-xl bg-gradient-to-tr from-red-900 to-red-500 duration-300 ease-in hover:-translate-y-5 hover:drop-shadow-2xl">
           <h1 className="mt-2 flex justify-center text-slate-50">
             {randomOpponent.name}
@@ -105,6 +107,7 @@ const Battle = ({ userPokemon }) => {
         </div>
       </div>
       <div className="flex justify-evenly gap-8">
+        {/* Start Battle Button */}
         <button
           className="mt-6 flex w-1/4 cursor-pointer items-center justify-center gap-2 rounded-xl bg-red-500 p-2 px-12 py-6 text-xl text-white shadow-lg shadow-indigo-500/40 hover:bg-red-600"
           onClick={handleBattle}
@@ -112,6 +115,7 @@ const Battle = ({ userPokemon }) => {
         >
           Start Battle
         </button>
+        {/* Change Opponent Button */}
         <button
           className="mt-6 flex w-1/4 cursor-pointer items-center justify-center gap-2 rounded-xl bg-blue-500 p-2 px-12 py-6 text-xl text-white shadow-indigo-500/40 hover:bg-blue-700"
           onClick={tryAgainHandler}
@@ -123,18 +127,16 @@ const Battle = ({ userPokemon }) => {
         <div className="mt-8 flex items-center justify-center"></div>
       )}
       {result && (
-        <div className="mx-auto mt-8 flex h-24 w-1/2 items-center justify-center rounded-xl bg-slate-800">
-          <h1
-            className={`text-5xl font-semibold text-white ${
-              result.includes("Computer wins")
-                ? "text-red-500"
-                : "text-green-500"
-            }`}
-          >
-            {result}
-          </h1>
-        </div>
-      )}
+  <div className="mx-auto mt-8 flex h-24 w-1/2 items-center justify-center rounded-xl bg-slate-800 text-center overflow-hidden">
+    <h1
+      className={`text-xl md:text-4xl lg:text-5xl font-semibold text-white ${
+        result.includes("Computer wins") ? "text-red-500" : "text-green-500"
+      }`}
+    >
+      {result}
+    </h1>
+  </div>
+)}
     </div>
   );
 };
