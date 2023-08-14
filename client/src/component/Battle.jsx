@@ -104,16 +104,16 @@ const Battle = ({ userPokemon }) => {
           />
         </div>
       </div>
-      <div className="flex justify-around gap-8">
+      <div className="flex justify-evenly gap-8">
         <button
-          className="mt-6 flex w-1/4 cursor-pointer items-center justify-center gap-2 rounded-xl bg-red-500 hover:bg-red-600 p-2 px-12 py-6 text-xl text-white shadow-lg shadow-indigo-500/40"
+          className="mt-6 flex w-1/4 cursor-pointer items-center justify-center gap-2 rounded-xl bg-red-500 p-2 px-12 py-6 text-xl text-white shadow-lg shadow-indigo-500/40 hover:bg-red-600"
           onClick={handleBattle}
           disabled={startButtonStatus}
         >
           Start Battle
         </button>
         <button
-          className="mt-6 flex w-1/4 cursor-pointer items-center gap-2 justify-center rounded-xl bg-blue-500 hover:bg-blue-700 p-2 px-12 py-6 text-xl text-white shadow-indigo-500/40"
+          className="mt-6 flex w-1/4 cursor-pointer items-center justify-center gap-2 rounded-xl bg-blue-500 p-2 px-12 py-6 text-xl text-white shadow-indigo-500/40 hover:bg-blue-700"
           onClick={tryAgainHandler}
         >
           Change Opponent
@@ -123,7 +123,7 @@ const Battle = ({ userPokemon }) => {
         <div className="mt-8 flex items-center justify-center"></div>
       )}
       {result && (
-        <div className="mt-8 flex h-24 w-1/2 mx-auto items-center justify-center rounded-xl bg-slate-800">
+        <div className="mx-auto mt-8 flex h-24 w-1/2 items-center justify-center rounded-xl bg-slate-800">
           <h1
             className={`text-5xl font-semibold text-white ${
               result.includes("Computer wins")
