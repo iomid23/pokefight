@@ -1,16 +1,23 @@
-import { useState } from 'react'
+import React, { useState } from "react";
 import Pokedex from "./component/Pokedex";
-
+import Battle from "./component/Battle";
 
 function App() {
-  // const [count, setCount] = useState(0)
+  const [userPokemon, setUserPokemon] = useState(null);
+
+  const handleSelectPokemon = (selectedPokemon) => {
+    setUserPokemon(selectedPokemon);
+  };
 
   return (
-    <>
-    <Pokedex />
-     
-    </>
-  )
+    <div>
+      {userPokemon ? (
+        <Battle userPokemon={userPokemon} />
+      ) : (
+        <Pokedex onSelectPokemon={handleSelectPokemon} />
+      )}
+    </div>
+  );
 }
 
-export default App
+export default App;
