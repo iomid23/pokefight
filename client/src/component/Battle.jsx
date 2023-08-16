@@ -108,7 +108,7 @@ const Battle = ({ userPokemon }) => {
 
   return (
     <div className="h-screen bg-gradient-to-tr from-gray-600 to-gray-300">
-      <h1 className="mb-24 mt-4 flex h-16 items-center justify-center bg-slate-800 text-center text-5xl font-bold text-white">
+      <h1 className="mb-24 flex h-16 items-center justify-center bg-slate-800 text-center text-5xl font-bold text-white">
         Battle Arena
       </h1>
       <div className="grid grid-cols-2 gap-4 p-6">
