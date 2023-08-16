@@ -55,6 +55,7 @@ function Pokedex({ onSelectPokemon }) {
   };
 
   return (
+    
     <div className="bg-gradient-to-tr from-gray-600 to-gray-300">
       <h1 className="text-center text-2xl font-bold mt-4">My Pokedex</h1>
       <section className="flex justify-center">
