@@ -77,8 +77,37 @@ const Battle = ({ userPokemon }) => {
     return <h2>Loading...</h2>;
   }
 
+  const getTypeBackgroundColorClass = (type) => {
+    switch (type) {
+      case "fire":
+        return "bg-red-500";
+      case "water":
+        return "bg-blue-500";
+      case "grass":
+        return "bg-green-700";
+      case "bug":
+        return "bg-green-900";
+      case "flying":
+        return "bg-sky-600";
+      case "poison":
+        return "bg-purple-900";
+      case "ground":
+        return "bg-lime-950";
+      case "fairy":
+        return "bg-indigo-400";
+      case "electric":
+        return "bg-yellow-600";
+      case "fighting":
+        return "bg-stone-800";
+      case "psychic":
+        return "bg-violet-900";
+      default:
+        return "bg-gray-500";
+    }
+  };
+
   return (
-    <div className="h-screen bg-gradient-to-tr from-gray-600 to-gray-300 ">
+    <div className="h-screen bg-gradient-to-tr from-gray-600 to-gray-300">
       <h1 className="mb-24 mt-4 flex h-16 items-center justify-center bg-slate-800 text-center text-5xl font-bold text-white">
         Battle Arena
       </h1>
@@ -93,6 +122,18 @@ const Battle = ({ userPokemon }) => {
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${userPokemon.id}.svg`}
             alt={userPokemon.name}
           />
+          <div className="mt-2 flex justify-center space-x-2">
+            {userPokemon.types.map((type) => (
+              <span
+                key={type.slot}
+                className={`rounded-lg px-2 py-1 text-white ${getTypeBackgroundColorClass(
+                  type.type.name
+                )}`}
+              >
+                {type.type.name}
+              </span>
+            ))}
+          </div>
         </div>
         {/* Random Opponent */}
         <div className="cursor-pointer rounded-xl bg-gradient-to-tr from-red-900 to-red-500 duration-300 ease-in hover:-translate-y-5 hover:drop-shadow-2xl">
@@ -104,6 +145,18 @@ const Battle = ({ userPokemon }) => {
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${randomOpponent.id}.svg`}
             alt={randomOpponent.name}
           />
+          <div className="mt-2 flex justify-center space-x-2">
+            {randomOpponent.types.map((type) => (
+              <span
+                key={type.slot}
+                className={`rounded-lg px-2 py-1 text-white ${getTypeBackgroundColorClass(
+                  type.type.name
+                )}`}
+              >
+                {type.type.name}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
       <div className="flex justify-evenly gap-8">
@@ -127,16 +180,18 @@ const Battle = ({ userPokemon }) => {
         <div className="mt-8 flex items-center justify-center"></div>
       )}
       {result && (
-  <div className="mx-auto mt-8 flex h-24 w-1/2 items-center justify-center rounded-xl bg-slate-800 text-center overflow-hidden">
-    <h1
-      className={`text-xl md:text-4xl lg:text-5xl font-semibold text-white ${
-        result.includes("Computer wins") ? "text-red-500" : "text-green-500"
-      }`}
-    >
-      {result}
-    </h1>
-  </div>
-)}
+        <div className="mx-auto mt-8 flex h-24 w-1/2 items-center justify-center overflow-hidden rounded-xl bg-slate-800 text-center">
+          <h1
+            className={`text-xl font-semibold text-white md:text-4xl lg:text-5xl ${
+              result.includes("Computer wins")
+                ? "text-red-500"
+                : "text-green-500"
+            }`}
+          >
+            {result}
+          </h1>
+        </div>
+      )}
     </div>
   );
 };
