@@ -65,7 +65,7 @@ function Pokedex({ onSelectPokemon }) {
             <div
               key={pokemon.id}
               onClick={() => onSelectPokemon(pokemon)}
-              className={`rounded-xl w-48 h-60 cursor-pointer ease-in duration-300 
+              className={`rounded-xl w-48 h-64 cursor-pointer ease-in duration-300 
               hover:-translate-y-5 hover:drop-shadow-2xl 
               bg-gradient-to-tr from-red-900 to-red-500`}
             >
@@ -92,9 +92,9 @@ function Pokedex({ onSelectPokemon }) {
               <div className=" flex justify-center space-x-8 mt-2">
                 <div
                   id="my promp"
-                  className="bg-gradient-to-tr from-rose-900 to-rose-300 rounded-lg border-2"
+                  className="bg-gradient-to-tr from-rose-900 to-rose-300 rounded-lg border-2 "
                 >
-                  <button className="w-14 text-slate-100 ">
+                  <button className="w-14 text-slate-100 hover:bg-rose-600 hover:border-4">
                   <PopupGfg selectedPokemon={pokemon} />
 
                   </button>
@@ -103,7 +103,7 @@ function Pokedex({ onSelectPokemon }) {
                   id="select"
                   className="bg-gradient-to-tr from-rose-900 to-rose-300  rounded-lg border-2"
                 >
-                  <button className="w-14 text-slate-100 ">Select</button>
+                  <button className="w-14 text-slate-100  hover:bg-rose-600 hover:border-4 ">Select</button>
                 </div>
               </div>
             </div>
