@@ -3,6 +3,7 @@ import React ,{useState} from 'react';
 import Pokedex from './component/Pokedex'; 
 import Battle from './component/Battle';
 import Header from './component/Header';
+import Footer from './component/footer';
 
 
 function App() {
@@ -24,6 +25,8 @@ function App() {
          <Pokedex onSelectPokemon={handleSelectPokemon} />
        )}
      </div>
+
+     <Footer />
    </>
  );
 

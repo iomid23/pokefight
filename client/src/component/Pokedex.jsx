@@ -57,7 +57,7 @@ function Pokedex({ onSelectPokemon }) {
   return (
     
     <div className="bg-gradient-to-tr from-gray-600 to-gray-300">
-      <h1 className="text-center text-2xl font-bold mt-4">My Pokedex</h1>
+      <h1 className="text-center text-2xl font-bold pt-4">My Pokedex</h1>
       <section className="flex justify-center">
         <div className="grid grid-cols-5 gap-4 p-6">
           {detailedPokemon.map((pokemon) => (
