@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
+import PopupGfg from "./PopupGfg";
 
 function Pokedex({ onSelectPokemon }) {
   const [globalPokemon, setGlobalPokemon] = useState([]);
   const [detailedPokemon, setDetailedPokemon] = useState([]);
 
   useEffect(() => {
-    fetch("https://pokeapi.co/api/v2/pokemon?limit=200&offset=0")
+    fetch("https://pokeapi.co/api/v2/pokemon?limit=20&offset=0")
       .then((response) => response.json())
       .then((data) => {
         setGlobalPokemon(data.results);
@@ -93,7 +94,10 @@ function Pokedex({ onSelectPokemon }) {
                   id="my promp"
                   className="bg-gradient-to-tr from-rose-900 to-rose-300 rounded-lg border-2"
                 >
-                  <button className="w-14 text-slate-100 ">info</button>
+                  <button className="w-14 text-slate-100 ">
+                  <PopupGfg selectedPokemon={pokemon} />
+
+                  </button>
                 </div>
                 <div
                   id="select"
