@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
+import { saveGameResult } from "./api";
+import Leaderboard from "./Leaderboard";
 
 const Battle = ({ userPokemon }) => {
   const [randomOpponent, setRandomOpponent] = useState(null);
@@ -37,7 +39,7 @@ const Battle = ({ userPokemon }) => {
     }
   };
 
-  const handleBattle = () => {
+  const handleBattle = async () => {
     if (!userPokemon || !randomOpponent) {
       return;
     }
@@ -51,6 +53,16 @@ const Battle = ({ userPokemon }) => {
 
     const attackThreshold = Math.floor(Math.random() * (opponentDefense + 30));
     const isWin = userAttack > attackThreshold;
+    const gameResult = {
+      winner: isWin ? userPokemon.name : randomOpponent.name,
+      looser: isWin ? randomOpponent.name : userPokemon.name,
+    };
+
+    try {
+      await saveGameResult(gameResult);
+    } catch (error) {
+      console.error("Error saving game result:", error);
+    }
 
     setStartButtonStatus(true);
 
@@ -108,7 +120,7 @@ const Battle = ({ userPokemon }) => {
 
   return (
     <div className="h-screen bg-gradient-to-tr from-gray-600 to-gray-300">
-      <h1 className="mb-24 mt-4 flex h-16 items-center justify-center bg-slate-800 text-center text-5xl font-bold text-white">
+      <h1 className="mb-24 flex h-16 items-center justify-center bg-slate-800 text-center text-5xl font-bold text-white">
         Battle Arena
       </h1>
       <div className="grid grid-cols-2 gap-4 p-6">
@@ -188,6 +200,13 @@ const Battle = ({ userPokemon }) => {
           </h1>
         </div>
       )}
+      <div
+        className={`rounded-xl w-{100%} h-80 cursor-pointer ease-in duration-300 
+              hover:-translate-y-5 hover:drop-shadow-2xl 
+              bg-gradient-to-tr from-red-900 to-red-500`}
+      >
+        <Leaderboard />
+      </div>
     </div>
   );
 };
