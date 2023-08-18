@@ -85,6 +85,7 @@ export const deleteGameResult = async (req, res) => {
     });
   }
 };
+
 export const deleteAllGameResults = async (req, res) => {
   try {
 
