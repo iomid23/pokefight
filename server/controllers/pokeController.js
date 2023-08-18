@@ -21,15 +21,13 @@ export const getOneScore = (req, res) => {
     .catch((err) => console.log(err));
 };
 
-export const createScore = (req, res) => {
-  console.log(req.body);
-  const { winner, looser } = req.body;
-
-  pokefight
-    .create({
-      winner: winner,
-      looser: looser,
-    })
-    .then((user) => res.send(user))
-    .catch((err) => console.log(err));
+export const createScore = async (req, res) => {
+  try {
+    console.log(req.body);
+    const { winner, looser } = req.body;
+    const newScore = await pokefight.create(req.body);
+    res.status(201).json(newScore);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
 };
