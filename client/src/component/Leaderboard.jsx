@@ -3,6 +3,7 @@ import { getLeaderboard } from "./api";
 
 const Leaderboard = () => {
   const [leaderboard, setLeaderboard] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchLeaderboard();
@@ -12,8 +13,10 @@ const Leaderboard = () => {
     try {
       const data = await getLeaderboard();
       setLeaderboard(data);
+      setLoading(false);
     } catch (error) {
       console.error("Error fetching leaderboard:", error);
+      setLoading(false);
     }
   };
 

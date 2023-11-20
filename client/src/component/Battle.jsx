@@ -200,13 +200,6 @@ const Battle = ({ userPokemon }) => {
           </h1>
         </div>
       )}
-      <div
-        className={`rounded-xl w-{100%} h-80 cursor-pointer ease-in duration-300 
-              hover:-translate-y-5 hover:drop-shadow-2xl 
-              bg-gradient-to-tr from-red-900 to-red-500`}
-      >
-        <Leaderboard />
-      </div>
     </div>
   );
 };
