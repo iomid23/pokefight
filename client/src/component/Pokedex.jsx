@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PopupGfg from "./PopupGfg";
+import { Link } from "react-router-dom";
 
 function Pokedex({ onSelectPokemon }) {
   const [globalPokemon, setGlobalPokemon] = useState([]);
@@ -56,7 +57,6 @@ function Pokedex({ onSelectPokemon }) {
   };
 
   return (
-    
     <div className="bg-gradient-to-tr from-gray-600 to-gray-300">
       <h1 className="text-center text-2xl font-bold pt-4">My Pokedex</h1>
       <section className="flex justify-center">
@@ -95,15 +95,18 @@ function Pokedex({ onSelectPokemon }) {
                   className="bg-gradient-to-tr from-rose-900 to-rose-300 rounded-lg border-2 "
                 >
                   <button className="w-14 text-slate-100 hover:bg-rose-600 hover:border-4">
-                  <PopupGfg selectedPokemon={pokemon} />
-
+                    <PopupGfg selectedPokemon={pokemon} />
                   </button>
                 </div>
                 <div
                   id="select"
                   className="bg-gradient-to-tr from-rose-900 to-rose-300  rounded-lg border-2"
                 >
-                  <button className="w-14 text-slate-100  hover:bg-rose-600 hover:border-4 ">Select</button>
+                  <Link to="/battle">
+                    <button className="w-14 text-slate-100 hover:bg-rose-600 hover:border-4">
+                      Select
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
