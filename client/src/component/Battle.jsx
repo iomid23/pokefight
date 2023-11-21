@@ -124,7 +124,7 @@ const Battle = ({ userPokemon }) => {
         Battle Arena
       </h1>
       <div className="grid grid-cols-2 gap-4 p-6">
-        <div className="cursor-pointer rounded-xl bg-gradient-to-tr from-red-900 to-red-500 duration-300 ease-in hover:-translate-y-5 hover:drop-shadow-2xl">
+        <div className="cursor-pointer rounded-xl bg-gradient-to-tr from-red-900 to-red-500 duration-300 p-1 ease-in hover:-translate-y-5 hover:drop-shadow-2xl">
           <h1 className="mt-2 flex justify-center text-slate-50">
             {userPokemon.name}
           </h1>

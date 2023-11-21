@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 Connection();
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: 'http://localhost:5174',
 }));
 
 const port = process.env.PORT || 8000;

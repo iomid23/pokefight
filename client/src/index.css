@@ -2,3 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+#root {
+    display: flex;
+    height: 100vh;
+}
+
+
+@media (max-width: 576px) {
+    .popup-content {
+        width: 90%;
+        margin: 1rem 0;
+    }
+
+    .popup-overlay {
+        overflow-y: auto;
+        height: 100%;
+
+    }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+    .popup-content {
+        width: 90%;
+    }
+
+    .popup-overlay {
+        overflow-y: auto;
+    }
+}
