@@ -16,7 +16,7 @@ function App() {
   };
 
   return (
-    <>
+    <div className="flex flex-col grow">
       <Header />
       <BrowserRouter>
         <Routes>
@@ -39,7 +39,7 @@ function App() {
         </Routes>
       </BrowserRouter>
       <Footer />
-    </>
+    </div>
   );
 }
 
