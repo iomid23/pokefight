@@ -2,31 +2,12 @@ import React, { useState, useEffect } from "react";
 import PopupGfg from "./PopupGfg";
 import { Link } from "react-router-dom";
 
-function Pokedex({ onSelectPokemon }) {
-  const [globalPokemon, setGlobalPokemon] = useState([]);
-  const [detailedPokemon, setDetailedPokemon] = useState([]);
-
-  useEffect(() => {
-    fetch("https://pokeapi.co/api/v2/pokemon?limit=20&offset=0")
-      .then((response) => response.json())
-      .then((data) => {
-        setGlobalPokemon(data.results);
-        const promises = data.results.map((pokemon) =>
-          fetch(pokemon.url).then((response) => response.json())
-        );
-        Promise.all(promises)
-          .then((detailedData) => {
-            setDetailedPokemon(detailedData);
-          })
-          .catch((error) => {
-            console.error(error);
-          });
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
-
+function Pokedex({
+  onSelectPokemon,
+  searchResults,
+  globalPokemon,
+  detailedPokemon,
+}) {
   const getTypeBackgroundColorClass = (type) => {
     switch (type) {
       case "fire":
@@ -55,62 +36,72 @@ function Pokedex({ onSelectPokemon }) {
         return "bg-gray-500";
     }
   };
-
+  const renderPokemon = (pokemon) => (
+    <div
+      key={pokemon.id}
+      onClick={() => onSelectPokemon(pokemon)}
+      className={`rounded-xl w-48 h-64 cursor-pointer ease-in duration-300 
+        hover:-translate-y-3 hover:drop-shadow-2xl 
+        bg-gradient-to-tr from-red-900 to-red-500`}
+    >
+      <div
+        key={pokemon.id}
+        onClick={() => onSelectPokemon(pokemon)}
+        className={`rounded-xl w-48 h-64 cursor-pointer ease-in duration-300 
+              hover:-translate-y-3 hover:drop-shadow-2xl 
+              bg-gradient-to-tr from-red-900 to-red-500`}
+      >
+        <h1 className="flex justify-center mt-2 text-slate-50">
+          {pokemon.name}
+        </h1>
+        <img
+          className="flex justify-center mx-auto mt-4 h-24"
+          src={pokemon.sprites.other.dream_world.front_default}
+          alt={pokemon.name}
+        />
+        <div className="flex justify-center space-x-2 pt-4">
+          {pokemon.types.map((type) => (
+            <span
+              key={type.slot}
+              className={`px-2 py-1 rounded-lg text-white ${getTypeBackgroundColorClass(
+                type.type.name
+              )}`}
+            >
+              {type.type.name}
+            </span>
+          ))}
+        </div>
+        <div className="flex justify-center space-x-8 pt-4 mt-2">
+          <div
+            id="my-prompt"
+            className="bg-gradient-to-tr from-rose-900 to-rose-300 rounded-lg border-2"
+          >
+            <div>
+              <PopupGfg selectedPokemon={pokemon} />
+            </div>
+          </div>
+          <div
+            id="select"
+            className="bg-gradient-to-tr from-rose-900 to-rose-300 rounded-lg border-2"
+          >
+            <div>
+              <Link to="/battle">
+                <button className="w-14 text-slate-100">Select</button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
   return (
     <div className="bg-gradient-to-tr from-gray-600 to-gray-300">
       <h1 className="text-center text-2xl font-bold pt-4">My Pokedex</h1>
       <section className="flex justify-center">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-6">
-          {detailedPokemon.map((pokemon) => (
-            <div
-              key={pokemon.id}
-              onClick={() => onSelectPokemon(pokemon)}
-              className={`rounded-xl w-48 h-64 cursor-pointer ease-in duration-300 
-              hover:-translate-y-3 hover:drop-shadow-2xl 
-              bg-gradient-to-tr from-red-900 to-red-500`}
-            >
-              <h1 className="flex justify-center mt-2 text-slate-50">
-                {pokemon.name}
-              </h1>
-              <img
-                className="flex justify-center mx-auto mt-4 h-24"
-                src={pokemon.sprites.other.dream_world.front_default}
-                alt={pokemon.name}
-              />
-              <div className="flex justify-center space-x-2 pt-4">
-                {pokemon.types.map((type) => (
-                  <span
-                    key={type.slot}
-                    className={`px-2 py-1 rounded-lg text-white ${getTypeBackgroundColorClass(
-                      type.type.name
-                    )}`}
-                  >
-                    {type.type.name}
-                  </span>
-                ))}
-              </div>
-              <div className="flex justify-center space-x-8 pt-4 mt-2">
-                <div
-                  id="my-prompt"
-                  className="bg-gradient-to-tr from-rose-900 to-rose-300 rounded-lg border-2"
-                >
-                  <div>
-                    <PopupGfg selectedPokemon={pokemon} />
-                  </div>
-                </div>
-                <div
-                  id="select"
-                  className="bg-gradient-to-tr from-rose-900 to-rose-300 rounded-lg border-2"
-                >
-                  <div>
-                    <Link to="/battle">
-                      <button className="w-14 text-slate-100">Select</button>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
+          {searchResults.length > 0
+            ? searchResults.map(renderPokemon)
+            : detailedPokemon.map(renderPokemon)}
         </div>
       </section>
     </div>
