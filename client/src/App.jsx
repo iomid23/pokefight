@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import Pokedex from "./component/Pokedex";
 import Battle from "./component/Battle";
@@ -22,7 +22,11 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<Pokedex onSelectPokemon={handleSelectPokemon} />}
+            element={
+              setGlobalPokemon && (
+                <Pokedex onSelectPokemon={handleSelectPokemon} />
+              )
+            }
           />
           <Route
             path="/battle"
