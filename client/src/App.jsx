@@ -12,8 +12,6 @@ function App() {
   const [userPokemon, setUserPokemon] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const [data, setData] = useState([]);
-
   const [globalPokemon, setGlobalPokemon] = useState([]);
   const [detailedPokemon, setDetailedPokemon] = useState([]);
 

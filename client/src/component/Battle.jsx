@@ -70,7 +70,7 @@ const Battle = ({ userPokemon }) => {
       if (isWin) {
         setResult("Congratulations, you win!");
       } else {
-        setResult("Sorry, Computer wins!");
+        setResult(`Sorry, ${randomOpponent.name} wins!`);
       }
     }, 2100);
   };
