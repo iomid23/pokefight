@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Pokedex from "./component/Pokedex";
 import Battle from "./component/Battle";
 import Header from "./component/Header";
-import Footer from "./component/footer";
+import Footer from "./component/Footer";
 import Leaderboard from "./component/Leaderboard";
 import { saveGameResult } from "./component/api";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -50,7 +50,7 @@ function App() {
       if (matchingResults.length === 0) {
         setSearchMessage("Nothing found");
       } else {
-        setSearchMessage(""); // Reset the message if there are matching results
+        setSearchMessage("");
       }
     }
   };
