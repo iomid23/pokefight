@@ -7,6 +7,8 @@ function Pokedex({
   searchResults,
   globalPokemon,
   detailedPokemon,
+  matchingResults,
+  searchTerm,
 }) {
   const getTypeBackgroundColorClass = (type) => {
     switch (type) {
@@ -55,7 +57,7 @@ function Pokedex({
           {pokemon.name}
         </h1>
         <img
-          className="flex justify-center mx-auto mt-4 h-24"
+          className="flex justify-center mx-auto mt-4 h-24 w-24"
           src={pokemon.sprites.other.dream_world.front_default}
           alt={pokemon.name}
         />
@@ -95,12 +97,16 @@ function Pokedex({
     </div>
   );
   return (
-    <div className="bg-gradient-to-tr from-gray-600 to-gray-300">
+    <div className="flex flex-col grow bg-gradient-to-tr from-gray-600 to-gray-300">
       <h1 className="text-center text-2xl font-bold pt-4">My Pokedex</h1>
       <section className="flex justify-center">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-6">
-          {searchResults.length > 0
-            ? searchResults.map(renderPokemon)
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-8 p-6">
+          {searchTerm
+            ? searchResults.length > 0
+              ? searchResults.map(renderPokemon)
+              : matchingResults.length > 0
+              ? searchResults.map(renderPokemon)
+              : "No Pokemon found"
             : detailedPokemon.map(renderPokemon)}
         </div>
       </section>

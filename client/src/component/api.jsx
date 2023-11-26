@@ -2,7 +2,10 @@ import axios from "axios";
 
 export const saveGameResult = async (gameResult) => {
   try {
-    await axios.post("http://localhost:8000/game/save", gameResult);
+    await axios.post(
+      "https://pokefight-44u6.onrender.com/game/save",
+      gameResult
+    );
   } catch (error) {
     throw error;
   }
@@ -10,7 +13,9 @@ export const saveGameResult = async (gameResult) => {
 
 export const getLeaderboard = async () => {
   try {
-    const response = await axios.get("http://localhost:8000/game/leaderboard");
+    const response = await axios.get(
+      "https://pokefight-44u6.onrender.com/game/leaderboard"
+    );
     return response.data;
   } catch (error) {
     throw error;

@@ -12,6 +12,7 @@ function App() {
   const [userPokemon, setUserPokemon] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [matchingResults, setMatchingResults] = useState([]);
   const [globalPokemon, setGlobalPokemon] = useState([]);
   const [detailedPokemon, setDetailedPokemon] = useState([]);
 
@@ -45,6 +46,12 @@ function App() {
         pokemon.name.toLowerCase().includes(term)
       );
       setSearchResults(matchingResults);
+
+      if (matchingResults.length === 0) {
+        setSearchMessage("Nothing found");
+      } else {
+        setSearchMessage(""); // Reset the message if there are matching results
+      }
     }
   };
   const handleSelectPokemon = (selectedPokemon) => {
@@ -68,8 +75,10 @@ function App() {
                 <Pokedex
                   onSelectPokemon={handleSelectPokemon}
                   searchResults={searchResults}
+                  matchingResults={matchingResults}
                   globalPokemon={globalPokemon}
                   detailedPokemon={detailedPokemon}
+                  searchTerm={searchTerm}
                 />
               )
             }

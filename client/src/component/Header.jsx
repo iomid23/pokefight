@@ -13,18 +13,22 @@ function Header({ searchTerm, handleSearch, searchResults }) {
       <nav>
         <ul className="flex space-x-4 text-lg">
           {/* Your other navigation items here */}
+          <li>
+            <a href="/leaderboard" className="text-white hover:text-gray-200">
+              Leaderboard
+            </a>
+          </li>
+          <form className="hidden md:block flex-col items-start">
+            <input
+              className="bg-white text-gray-500 rounded ml-2 px-4 hover:bg-gray-100"
+              type="text"
+              placeholder="Search..."
+              value={searchTerm}
+              onChange={handleSearch}
+            />
+          </form>
         </ul>
       </nav>
-
-      <form className="hidden md:block flex-col items-start">
-        <input
-          className="bg-white text-gray-500 rounded ml-2 px-4 hover:bg-gray-100"
-          type="text"
-          placeholder="Search..."
-          value={searchTerm}
-          onChange={handleSearch}
-        />
-      </form>
     </header>
   );
 }
