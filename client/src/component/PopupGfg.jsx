@@ -46,7 +46,7 @@ export default function PopupGfg({ selectedPokemon }) {
                 <h1 className="font-bold flex justify-center p-9 text-5xl text-white">
                   {selectedPokemon.name}
                 </h1>
-                <div className="sm:flex flex-col self-center md:flex-row gap-2 lg:flex-row">
+                <div className="flex flex-col items-center self-center md:flex-row md:gap-2 lg:flex-row">
                   <img
                     className="h-30"
                     src={

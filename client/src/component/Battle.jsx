@@ -188,7 +188,7 @@ const Battle = ({ userPokemon }) => {
         <div className="mt-8 flex items-center justify-center"></div>
       )}
       {result && (
-        <div className="mx-auto mt-8 flex h-24 w-1/2 items-center justify-center overflow-hidden rounded-xl bg-slate-800 text-center">
+        <div className="mx-auto my-8 flex h-24 w-1/2 items-center justify-center overflow-hidden rounded-xl bg-slate-800 text-center">
           <h1
             className={`text-xl font-semibold text-white md:text-4xl lg:text-5xl ${
               result.includes("Computer wins")
