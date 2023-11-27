@@ -12,11 +12,10 @@ function Header({ searchTerm, handleSearch, searchResults }) {
 
       <nav>
         <ul className="flex space-x-4 text-lg">
-          {/* Your other navigation items here */}
           <li>
-            <a href="/leaderboard" className="text-white hover:text-gray-200">
+            <Link to="/leaderboard" className="text-white hover:text-gray-200">
               Leaderboard
-            </a>
+            </Link>
           </li>
           <form className="hidden md:block flex-col items-start">
             <input
