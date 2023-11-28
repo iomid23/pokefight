@@ -60,12 +60,12 @@ function App() {
 
   return (
     <div className="flex flex-col grow">
-      <Header
-        searchTerm={searchTerm}
-        handleSearch={handleSearch}
-        searchResults={searchResults}
-      />
-      <BrowserRouter basename="/client">
+      <BrowserRouter>
+        <Header
+          searchTerm={searchTerm}
+          handleSearch={handleSearch}
+          searchResults={searchResults}
+        />
         <Routes>
           <Route
             path="/"
