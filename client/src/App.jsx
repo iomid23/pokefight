@@ -6,7 +6,7 @@ import Header from "./component/Header";
 import Footer from "./component/Footer";
 import Leaderboard from "./component/Leaderboard";
 import { saveGameResult } from "./component/api";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   const [userPokemon, setUserPokemon] = useState(null);
@@ -65,7 +65,7 @@ function App() {
         handleSearch={handleSearch}
         searchResults={searchResults}
       />
-      <BrowserRouter>
+      <BrowserRouter basename="/client">
         <Routes>
           <Route
             path="/"
